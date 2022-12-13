@@ -12,26 +12,22 @@
 <body>
 
 <div class="container">
-	<div> 리스트
+	<div>
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>가입날짜</th>
-					<th>수정한날짜</th>
+					<th>1 : </th>
+					<th>2 : </th>
+					<th>3 : </th>
+					<th>4 : </th>
+					<th>5 : </th>
+					<th>6 : </th>
+					<th>7 : </th>
+					<th>8 : </th>
 				</tr>
 			</thead>
-			<tbody>
-				<c:forEach var="item" items="${members}">
-				   <tr>
-				     <td class="editMemInfo">${item.mem_id}</td>
-				     <td>${item.mem_name}</td>
-				     <td>${item.mem_tel}</td>
-				     <td>${item.mem_regDate}</td>
-				     <td>${item.mem_uptDate}</td>
-				</c:forEach>
+			<tbody id="corona">
+
 			</tbody>
 		</table>
 	</div>
@@ -47,8 +43,33 @@
 <script type="text/javascript">
 $("#test").on("click",function(){
 
-	ajaxAction("POST","/url","",function(data){
-		console.log("가져온 데아터 : "+data );
+	ajaxAction("GET","/url","",function(data){
+		var html = "";
+		var rData = JSON.parse(data);
+ 		var api = JSON.parse(data).API;
+		var kor = JSON.parse(data).korea; 
+		
+/* 		var arr = Array.from(kor);
+		console.log(arr);
+		
+		Array.from(rData).forEach(function(ele){
+			console.log(ele);
+		}); */
+		function f() {
+		    let arr = Array.from(rData);
+		    arr.forEach((value, key) => {
+		        console.log(`${value} : ${key}`);
+		    });
+		}
+		console.log("함수 : "+f());
+		     
+		     
+		     
+		     
+		     
+		
+	
+
 	});
 });
 

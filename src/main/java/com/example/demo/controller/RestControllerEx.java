@@ -5,21 +5,23 @@ import java.io.IOException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.url.UrlComponent1;
+import com.example.demo.url.UrlConnection1;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequiredArgsConstructor
+@Slf4j
 public class RestControllerEx {
-	private final UrlComponent1 urlComponent1;
+	private final UrlConnection1 urlComponent1 = new UrlConnection1();
 		
 		
 		
 	
 	@GetMapping(path = "/url")
 	public String getUrlInfos() throws IOException {
-		urlComponent1.printPage();
-		return "ok";
+		UrlConnection1.main(null);
+		log.info("###UrlConnection1.main() : "+UrlConnection1.main(null));
+		return UrlConnection1.main(null);
 	}
 }
